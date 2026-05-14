@@ -45,11 +45,11 @@ body {
 }
 
 .section-shell {
-  @apply mx-auto w-full max-w-[1320px] px-6 md:px-10;
+  @apply mx-auto w-full max-w-[1320px] px-4 sm:px-6 md:px-10;
 }
 
 .section-gap {
-  @apply py-[9rem] md:py-[10rem];
+  @apply py-[6rem] sm:py-[8rem] md:py-[9rem] lg:py-[10rem];
 }
 
 .glass-card {

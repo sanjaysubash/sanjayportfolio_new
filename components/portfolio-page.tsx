@@ -8,7 +8,6 @@ import {
   Send,
   Sparkles,
   Star,
-  Users,
 } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -19,7 +18,7 @@ import {
   staggerContainer,
   viewportConfig,
 } from "@/animations";
-import { achievements, skillPills } from "@/constants/data";
+import { skillPills } from "@/constants/data";
 import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/magnetic-button";
 
@@ -38,10 +37,10 @@ export function PortfolioPage() {
     <main className="relative overflow-clip pb-20 text-[#0a0a0a]">
       <div className="noise-overlay" />
 
-      <div className="pointer-events-none absolute -top-36 left-[-120px] h-[360px] w-[360px] rounded-full bg-[#d5e2ff] blur-[130px]" />
-      <div className="pointer-events-none absolute right-[-100px] top-[760px] h-[320px] w-[320px] rounded-full bg-[#ffd9b4] blur-[130px]" />
+      <div className="pointer-events-none absolute -top-36 left-[-120px] h-[280px] sm:h-[360px] w-[280px] sm:w-[360px] rounded-full bg-[#d5e2ff] blur-[100px] sm:blur-[130px]" />
+      <div className="pointer-events-none absolute right-[-80px] sm:right-[-100px] top-[600px] sm:top-[760px] h-[240px] sm:h-[320px] w-[240px] sm:w-[320px] rounded-full bg-[#ffd9b4] blur-[100px] sm:blur-[130px]" />
 
-      <section id="home" className="section-shell section-gap relative pt-28 md:pt-32">
+      <section id="home" className="section-shell section-gap relative pt-16 sm:pt-20 md:pt-28 lg:pt-32">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -400,9 +399,9 @@ export function PortfolioPage() {
 
               <div>
                 <div className="relative max-w-[520px]">
-                  <div className="overflow-x-auto snap-x snap-mandatory -mx-4 px-4 flex gap-4 touch-pan-x">
+                  <div className="overflow-x-auto snap-x snap-mandatory -mx-4 px-4 flex gap-3 sm:gap-4 touch-pan-x">
                     {pcImages.map((src) => (
-                      <div key={src} className="snap-center flex-shrink-0 w-[320px] md:w-[420px] rounded-[18px] overflow-hidden">
+                      <div key={src} className="snap-center flex-shrink-0 w-[280px] sm:w-[320px] md:w-[420px] rounded-[18px] overflow-hidden">
                         <Image src={src} alt="PC build" width={1280} height={800} className="h-auto w-full object-cover rounded-[18px]" />
                       </div>
                     ))}
@@ -429,27 +428,27 @@ export function PortfolioPage() {
           </motion.article>
         </section>
 
-        <section id="contact" className="section-shell section-gap pt-10">
+        <section id="contact" className="section-shell section-gap pt-8 sm:pt-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={viewportConfig}
             variants={fadeUp}
-            className="mx-auto grid max-w-[1100px] gap-6 rounded-[36px] border border-black/10 bg-[#efefec] px-6 py-10 shadow-[0_24px_64px_rgba(20,20,20,0.06)] md:px-10 md:py-12 lg:grid-cols-[0.9fr_1.1fr]"
+            className="mx-auto grid max-w-[1100px] gap-6 sm:gap-8 rounded-[36px] border border-black/10 bg-[#efefec] px-4 sm:px-6 py-8 sm:py-10 md:px-10 md:py-12 shadow-[0_24px_64px_rgba(20,20,20,0.06)] lg:grid-cols-[0.9fr_1.1fr]"
           >
             <div className="space-y-6">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/45">
                   Contact
                 </p>
-                <h3 className="editorial-title mt-4 text-[clamp(2rem,4.6vw,4.5rem)] font-semibold leading-[0.95]">
+                <h3 className="editorial-title mt-4 text-[clamp(1.8rem,4vw,4.5rem)] font-semibold leading-[0.95]">
                   Want to connect?
                   <br />
                   Let&apos;s build something premium.
                 </h3>
               </div>
 
-              <p className="max-w-[40ch] text-[1.05rem] leading-relaxed text-black/70">
+              <p className="max-w-[40ch] text-base sm:text-[1.05rem] leading-relaxed text-black/70">
                 I’m available for product design, frontend engineering, data-driven dashboards, and collaborative startup work.
               </p>
 
@@ -513,8 +512,8 @@ export function PortfolioPage() {
           </motion.div>
         </section>
 
-        <footer className="section-shell pb-8 pt-20">
-          <div className="flex flex-col items-center gap-6 rounded-[32px] border border-black/10 bg-white/60 px-6 py-10 text-center">
+        <footer className="section-shell pb-8 pt-12 sm:pt-20">
+          <div className="flex flex-col items-center gap-6 rounded-[32px] border border-black/10 bg-white/60 px-4 sm:px-6 py-8 sm:py-10 text-center">
             <div className="flex items-center gap-3">
               {[AtSign, BriefcaseBusiness, Send].map((Icon, index) => (
                 <motion.a

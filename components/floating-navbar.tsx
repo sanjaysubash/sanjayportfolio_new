@@ -18,9 +18,9 @@ export function FloatingNavbar() {
     <motion.nav
       animate={{ scale: isShrunk ? 0.96 : 1, y: isShrunk ? -4 : 0 }}
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed left-1/2 top-5 z-50 w-[calc(100%-2rem)] max-w-[760px] -translate-x-1/2 rounded-full border border-black/10 bg-white/80 px-4 py-3 shadow-[0_12px_30px_rgba(0,0,0,0.08)] backdrop-blur-xl"
+      className="fixed left-1/2 top-3 sm:top-5 z-50 w-[calc(100%-1rem)] sm:w-[calc(100%-2rem)] max-w-[760px] -translate-x-1/2 rounded-full border border-black/10 bg-white/80 px-3 sm:px-4 py-2 sm:py-3 shadow-[0_12px_30px_rgba(0,0,0,0.08)] backdrop-blur-xl"
     >
-      <ul className="flex items-center justify-between gap-1 text-sm font-medium tracking-[-0.02em] md:gap-2">
+      <ul className="flex items-center justify-between gap-0.5 sm:gap-1 text-xs sm:text-sm font-medium tracking-[-0.02em] md:gap-2">
         {navItems.map((item) => {
           const isExternal = item.href.startsWith("http");
           return (
@@ -29,7 +29,7 @@ export function FloatingNavbar() {
                 href={item.href}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noreferrer" : undefined}
-                className="inline-flex rounded-full px-4 py-2.5 text-[#262626] transition-all duration-300 hover:-translate-y-0.5 hover:bg-black hover:text-white"
+                className="inline-flex rounded-full px-2 sm:px-4 py-2 sm:py-2.5 text-[#262626] transition-all duration-300 hover:-translate-y-0.5 hover:bg-black hover:text-white"
               >
                 {item.label}
               </Link>

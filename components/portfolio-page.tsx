@@ -19,6 +19,7 @@ import {
   viewportConfig,
 } from "@/animations";
 import { skillPills } from "@/constants/data";
+import { SkillsSection } from "@/components/skills-section";
 import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/magnetic-button";
 
@@ -135,6 +136,8 @@ export function PortfolioPage() {
             </motion.li>
           ))}
         </motion.ul>
+
+        <SkillsSection />
       </section>
 
       <section id="highlights" className="section-shell section-gap">
@@ -311,39 +314,6 @@ export function PortfolioPage() {
             whileInView="visible"
             viewport={viewportConfig}
             variants={fadeUp}
-            className="relative overflow-hidden rounded-[36px] border border-white/20 bg-gradient-to-br from-[#0d4fd6] via-[#0f63f3] to-[#0d48bc] px-8 py-14 text-white shadow-[0_34px_80px_rgba(22,76,200,0.35)] md:px-14"
-          >
-            <div className="absolute -left-16 top-12 h-48 w-48 rounded-full bg-white/20 blur-2xl" />
-            <div className="absolute right-10 top-14 h-24 w-24 rounded-[24px] border border-white/30 bg-white/20 backdrop-blur" />
-            <motion.div
-              animate={{ y: [0, -16, 0], rotate: [0, 7, 0] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute right-24 bottom-16 h-20 w-20 rounded-full border border-white/35 bg-white/20"
-            />
-            <h3 className="editorial-title mx-auto max-w-[16ch] text-center text-[clamp(2rem,4.8vw,4.8rem)] font-semibold leading-[1.02]">
-              The power of visual in product design
-            </h3>
-            <p className="mx-auto mt-5 max-w-[60ch] text-center text-[1.07rem] leading-relaxed text-white/85">
-              How visual systems affect perception, interaction and digital
-              experiences.
-            </p>
-            <div className="mt-10 flex justify-center">
-              <MagneticButton>
-                <Button variant="subtle" size="lg" className="gap-2 bg-white text-black">
-                  Read article
-                  <ArrowUpRight size={17} />
-                </Button>
-              </MagneticButton>
-            </div>
-          </motion.article>
-        </section>
-
-        <section className="section-shell section-gap pt-8">
-          <motion.article
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportConfig}
-            variants={fadeUp}
             className="relative overflow-hidden rounded-[36px] border border-black/10 bg-white p-8 shadow-[0_34px_80px_rgba(10,10,10,0.06)] md:p-14"
           >
             <div className="grid items-center gap-10 lg:grid-cols-2">
@@ -482,9 +452,9 @@ export function PortfolioPage() {
             <div className="grid gap-4 sm:grid-cols-2">
               {[
                 { label: "LinkedIn", href: "https://www.linkedin.com/in/sanjaysubash/", meta: "Professional updates", icon: BriefcaseBusiness },
-                { label: "Instagram", href: "#", meta: "Visual stories", icon: Send },
-                { label: "Phone", href: "tel:+910000000000", meta: "Add your number", icon: AtSign },
-                { label: "Email", href: "mailto:hello@example.com", meta: "Add your email", icon: Sparkles },
+                { label: "Instagram", href: "https://www.instagram.com/mr._funguy/", meta: "Visual stories", icon: Send },
+                { label: "Phone", href: "tel:+91 8680976152", meta: "Call me", icon: AtSign },
+                { label: "Email", href: "mailto:officialsanjaysubash@gmail.com", meta: "Send an email", icon: Sparkles },
               ].map((item) => {
                 const Icon = item.icon;
                 return (

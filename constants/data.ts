@@ -1,5 +1,6 @@
 export const navItems = [
   { label: "Home", href: "#home" },
+  { label: "Skills", href: "#skills" },
   { label: "Work", href: "#highlights" },
 //   { label: "Highlights", href: "#work" },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/sanjaysubash/" },

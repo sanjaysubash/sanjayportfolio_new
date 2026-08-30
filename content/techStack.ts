@@ -1,0 +1,27 @@
+// Technologies documented across the résumé and the project write-ups on
+// this site. Kept in sync with content/skills.ts by a build-time guard.
+export const techStack = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Tailwind",
+  "Three.js",
+  "Node.js",
+  "Express.js",
+  "Python",
+  "Java",
+  "C",
+  "FastAPI",
+  "MongoDB",
+  "PostgreSQL",
+  "SQL",
+  "Power BI",
+  "Excel",
+  "Docker",
+  "Firebase",
+  "Git",
+  "Computer Hardware",
+  "Computer Networks",
+  "UI/UX",
+  "Graphics Design",
+];

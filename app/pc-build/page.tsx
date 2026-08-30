@@ -14,14 +14,14 @@ export default function PCBuildPage() {
     <main className="section-shell section-gap">
       <div className="mx-auto max-w-[980px] px-0">
         <h1 className="editorial-title mb-4 text-[clamp(1.6rem,3.2vw,3.4rem)] font-semibold">Custom High-Performance Workstation Build</h1>
-        <p className="muted-copy mb-6 text-base sm:text-lg text-black/75">
+        <p className="muted-copy mb-6 text-base sm:text-lg text-[color:var(--ink-soft)]">
           Designed and assembled a custom high-performance workstation optimized for full-stack development, AI experimentation, 3D rendering, gaming, and multitasking workflows. Built with RTX graphics, liquid cooling, RGB airflow optimization, and a modern performance-focused architecture.
         </p>
 
         <div className="mb-8 grid gap-6 md:gap-8 md:grid-cols-2">
           <div>
             <h3 className="font-semibold text-lg">Features</h3>
-            <ul className="mt-3 list-disc pl-5 text-sm sm:text-base text-black/75 space-y-2">
+            <ul className="mt-3 list-disc pl-5 text-sm sm:text-base text-[color:var(--ink-soft)] space-y-2">
               <li>RTX-powered graphics setup</li>
               <li>Liquid cooling with RGB thermal management</li>
               <li>High airflow optimized cabinet and multi-fan architecture</li>
@@ -29,7 +29,7 @@ export default function PCBuildPage() {
             </ul>
 
             <h3 className="mt-8 font-semibold text-lg">Tech / Hardware Stack</h3>
-            <ul className="mt-3 list-disc pl-5 text-sm sm:text-base text-black/75 space-y-2">
+            <ul className="mt-3 list-disc pl-5 text-sm sm:text-base text-[color:var(--ink-soft)] space-y-2">
               <li>NVIDIA GeForce RTX GPU</li>
               <li>ASUS Graphics Card</li>
               <li>Liquid CPU Cooler</li>

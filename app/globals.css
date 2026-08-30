@@ -1,68 +1,402 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM
+   Two themes, one token contract. Every surface, border and text
+   colour is a variable — components never hardcode a colour, so the
+   theme switch is a single attribute flip on <html>.
+   ═══════════════════════════════════════════════════════════════════ */
+
 :root {
-  --background: #f5f5f3;
-  --foreground: #0a0a0a;
-  --muted: #5f5f5f;
-  --border: rgba(0, 0, 0, 0.06);
-  --card: rgba(255, 255, 255, 0.88);
+  /* ── Light (default) ──────────────────────────────────────────── */
+  --bg: #faf9f7;
+  --bg-sunken: #f1f0ec;
+  --surface: #ffffff;
+  --surface-2: #fafaf9;
+  --surface-glass: rgba(255, 255, 255, 0.72);
+
+  --line: rgba(9, 9, 11, 0.08);
+  --line-strong: rgba(9, 9, 11, 0.14);
+
+  --ink: #09090b;
+  --ink-soft: #3f3f46;
+  --graphite: #6b6a66;
+
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-contrast: #ffffff;
+  --accent-soft: rgba(79, 70, 229, 0.09);
+  --accent-line: rgba(79, 70, 229, 0.3);
+  --accent-glow: 0 24px 60px rgba(79, 70, 229, 0.18);
+
+  --shadow-soft: 0 1px 2px rgba(9, 9, 11, 0.04), 0 12px 32px rgba(9, 9, 11, 0.05);
+  --shadow-lift: 0 2px 4px rgba(9, 9, 11, 0.04), 0 28px 60px rgba(9, 9, 11, 0.09);
+
+  --grid-line: rgba(9, 9, 11, 0.055);
+  --noise-opacity: 0.035;
+
+  /* legacy aliases still referenced by older components */
+  --paper: var(--bg);
+  --surface-sunken: var(--bg-sunken);
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --muted: var(--graphite);
+  --border: var(--line);
+  --card: var(--surface);
+
+  --radius-sm: 14px;
+  --radius-md: 20px;
   --radius-lg: 28px;
-  --shadow-soft: 0 24px 60px rgba(10, 10, 10, 0.05);
+  --radius-xl: 36px;
+
+  --header-h: 68px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-theme="dark"] {
+  --bg: #08080a;
+  --bg-sunken: #101013;
+  --surface: #111114;
+  --surface-2: #16161a;
+  --surface-glass: rgba(17, 17, 20, 0.72);
+
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+
+  --ink: #fafafa;
+  --ink-soft: #b4b4bb;
+  --graphite: #85858e;
+
+  --accent: #8b87f5;
+  --accent-hover: #a5a1ff;
+  --accent-contrast: #0b0b10;
+  --accent-soft: rgba(139, 135, 245, 0.13);
+  --accent-line: rgba(139, 135, 245, 0.34);
+  --accent-glow: 0 24px 60px rgba(139, 135, 245, 0.16);
+
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.5), 0 12px 32px rgba(0, 0, 0, 0.42);
+  --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.5), 0 28px 60px rgba(0, 0, 0, 0.55);
+
+  --grid-line: rgba(255, 255, 255, 0.055);
+  --noise-opacity: 0.028;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --color-accent: var(--accent);
   --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-* {
-  border-color: var(--border);
+@layer base {
+  * {
+    border-color: var(--line);
+  }
 }
+
+/* ── Base ───────────────────────────────────────────────────────── */
 
 html {
   scroll-behavior: smooth;
+  /* overflow-x guard: clip (not hidden) so position:sticky keeps working.
+     This is a belt-and-braces guard, not the fix — the layouts underneath
+     are measured overflow-free at every breakpoint.
+     Positioned because clipping makes scroll-linked animation resolve the
+     root as a scroll container, which must not be static. */
+  position: relative;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
+  /* Non-static: scroll-linked animation resolves body as a scroll container
+     (overflow-x is clipped below) and needs a positioned offset parent. */
+  position: relative;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   letter-spacing: -0.02em;
+  overflow-x: clip;
+  max-width: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Theme crossfade. Scoped to the properties that actually change, and
+   only while the toggle marks the document — so it never delays paint
+   or fights scroll-linked animation. */
+[data-theme-transition] *,
+[data-theme-transition] *::before,
+[data-theme-transition] *::after {
+  transition:
+    background-color 260ms var(--ease-out),
+    border-color 260ms var(--ease-out),
+    color 260ms var(--ease-out),
+    fill 260ms var(--ease-out);
+}
+
+body.is-locked {
+  overflow: hidden;
+  touch-action: none;
 }
 
 ::selection {
-  background: rgba(10, 10, 10, 0.12);
+  background: var(--accent-soft);
+  color: var(--ink);
 }
 
-.noise-overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 30;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+/* Anchors clear the sticky header instead of landing under it. */
+section[id],
+article[id] {
+  scroll-margin-top: calc(var(--header-h) + 28px);
 }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Long words / URLs must never push the layout wide. */
+p,
+li,
+h1,
+h2,
+h3,
+h4,
+dd,
+dt {
+  overflow-wrap: break-word;
+}
+
+/* ── Custom scrollbar (desktop pointer devices only) ─────────────── */
+@media (pointer: fine) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--line-strong);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-line);
+    background-clip: content-box;
+  }
+}
+
+/* ── Layout primitives ──────────────────────────────────────────── */
 
 .section-shell {
-  @apply mx-auto w-full max-w-[1320px] px-4 sm:px-6 md:px-10;
+  @apply mx-auto w-full max-w-[1280px] px-5 sm:px-6 md:px-10;
 }
 
 .section-gap {
-  @apply py-[6rem] sm:py-[8rem] md:py-[9rem] lg:py-[10rem];
+  @apply py-20 sm:py-24 md:py-28 lg:py-32;
 }
 
-.glass-card {
-  background: var(--card);
-  border: 1px solid var(--border);
+.surface-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
   box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(10px);
 }
 
 .editorial-title {
   @apply font-semibold tracking-[-0.04em] text-balance;
 }
 
+.mono-label {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  font-variant-ligatures: none;
+}
+
 .muted-copy {
-  color: var(--muted);
+  color: var(--graphite);
+}
+
+/* Accent-graded text for the one or two words that carry the headline. */
+.text-accent-grade {
+  background: linear-gradient(
+    100deg,
+    var(--accent) 0%,
+    color-mix(in oklab, var(--accent) 68%, var(--ink)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Decorative layers ──────────────────────────────────────────── */
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: var(--noise-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+}
+
+.tech-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.hairline-grid {
+  background: var(--line);
+  gap: 1px;
+}
+
+.status-dashed {
+  border: 1px dashed var(--line-strong);
+  background: var(--surface);
+}
+
+.placeholder-chip {
+  border: 1px dashed var(--line-strong);
+  color: var(--graphite);
+}
+
+.glass {
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+}
+
+.spotlight-card {
+  position: relative;
+  isolation: isolate;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+  background: radial-gradient(
+    300px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    var(--accent-soft),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.spotlight-card:hover::before,
+.spotlight-card:focus-within::before {
+  opacity: 1;
+}
+
+/* Animated underline for text links. */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s var(--ease-out);
+}
+
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* The portrait is a grayscale cutout on a white backdrop. Left as-is it
+   glares against the dark theme, so it is dimmed to sit in the page rather
+   than punch a hole in it. */
+.portrait-media {
+  filter: grayscale(1) contrast(1.02);
+}
+
+[data-theme="dark"] .portrait-media {
+  filter: grayscale(1) brightness(0.82) contrast(1.06);
+}
+
+.portrait-media:hover {
+  filter: grayscale(0) contrast(1.02);
+}
+
+[data-theme="dark"] .portrait-media:hover {
+  filter: grayscale(0) brightness(0.88) contrast(1.06);
+}
+
+/* Small icon buttons keep their compact look but get a comfortable ≥44px
+   hit area, so they stay tappable on a phone. */
+.tap-target {
+  position: relative;
+}
+
+.tap-target::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, 44px);
+  height: max(100%, 44px);
+  transform: translate(-50%, -50%);
+}
+
+/* ── Skeletons ──────────────────────────────────────────────────── */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-sunken);
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in oklab, var(--surface) 70%, transparent),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

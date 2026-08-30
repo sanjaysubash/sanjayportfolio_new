@@ -1,0 +1,123 @@
+SANJAY SUBASH
+Software Engineer / Product Engineer
+
+ Coimbatore, Tamil Nadu, India  |  +91 8680976152  |  officialsanjaysubash@gmail.com
+
+ linkedin.com/in/sanjaysubash  |  github.com/sanjaysubash  |  Portfolio: sanjayportfolio-new.vercel.app
+
+SUMMARY
+----------------------------------------
+
+Software engineer and product engineer who builds full-stack products end to end — schema, APIs, dashboards, and interfaces — and contributes beyond implementation into software architecture, Agile engineering process, technology roadmaps, and technical handover. Carried assessment, management, and analytics platforms to delivery at Aaruchudar, with MERN-stack and 3D visualization projects documented on GitHub.
+
+TECHNICAL SKILLS
+----------------------------------------
+
+Frontend: React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, Three.js
+
+Backend: Node.js, Express.js, FastAPI, REST APIs
+
+Data: MongoDB, PostgreSQL, SQL, Power BI, Excel
+
+Cloud & Tooling: Docker, Firebase, Git, GitHub, Vercel
+
+Other: Agile methodology, UI/UX, Graphics Design, Computer Hardware, Computer Networks
+
+PROFESSIONAL EXPERIENCE
+----------------------------------------
+
+ 
+ Software Engineer — Aaruchudar Pvt Ltd
+ | May 2025 – Aug 2026
+ 
+
+ Joined as Full-Stack Developer & Data Analyst (intern); converted to full-time Software Engineer. Coimbatore, India.
+
+ 
+ 
+- Contributed to the Human Intelligence Platform (Next.js, React, Node.js, MongoDB, Vercel): frontend architecture, admin portal, and automated certificate-generation workflows.
+ 
+- Helped carry the company's assessment application toward completion and delivery — functionality, technical implementation, debugging, and product-level improvements.
+ 
+- Contributed to the management/administration system through to a completed state, covering workflows, implementation, and debugging.
+ 
+- Built analytics dashboards and reporting workflows with Power BI and custom data pipelines, used to track program and platform activity.
+ 
+- Worked on introducing a structured Agile methodology, engineering principles, and development standards for the software team.
+ 
+- Contributed to the company technology roadmap across software and hardware projects, from concept through architecture to implementation.
+ 
+- Prepared a complete technical handover — repositories, applications, websites, management systems, current status, and ongoing technical work.
+ 
+
+PRODUCT & TECHNOLOGY INITIATIVES
+----------------------------------------
+
+ 
+ Riaura — Product Engineering & Technology (Human Intelligence + Neuroscience)
+ 
+
+ 
+ 
+- Contributed application development, software architecture, and UI/product experience; carried the management platform to completion.
+ 
+- Took the website to roughly 70% before work was paused by reprioritization; planned Agile methodology, engineering standards, and a software-and-hardware technology roadmap.
+ 
+
+ 
+ Lumivex — Product Development
+ 
+
+ 
+ 
+- Worked across product development, technical implementation, and software engineering; the product was completed and delivered.
+ 
+
+PROJECTS
+----------------------------------------
+
+ 
+- Brain — Interactive 3D Neural Mapping Platform: browser-based 3D brain visualization with neural region mapping, cortex isolation, and real-time interaction (Next.js, React, Three.js / React Three Fiber, TypeScript). Live: www.aaruchudar.com/hi-labs
+ 
+- ADRIN: MERN-stack sports information website with real-time news, event updates, and game schedules.
+ 
+- Minimalist Expense Splitter: MERN-stack group-expense tool with real-time balance calculation and sharing.
+ 
+- T-SWEAT: ad-carrying T-shirt with a movement tracker giving advertisers visibility and engagement insight.
+
+EDUCATION
+----------------------------------------
+
+ 
+ B.Tech, Computer Science and Business Systems — KIT, Kalaignar Karunanidhi Institute of Technology, Coimbatore
+ | 2022 – 2026
+ 
+
+ 
+ HSC — Sindhi Vidyalaya Matric Higher Secondary School, Coimbatore
+ | 2020 – 2022
+ 
+
+AWARDS
+----------------------------------------
+
+ 
+- Startup TN 2024 — Pitch Winner
+ 
+- Smart India Hackathon 2024 — Waitlisted
+ 
+- Cryptic Hunt 2023 — Winner  ·  Code Connection 2023 — Winner
+ 
+- Best Performer of Department, 2023
+ 
+- NCC 'B' Certificate with A grade, 2024  ·  NCC Thal Sena Camp Lead, 2024
+ 
+- SGFI Kabaddi Nationals, 2019
+
+CERTIFICATIONS & WORKSHOPS
+----------------------------------------
+
+ 
+- Workshops: IIT Madras (Tech for India), DRDO (Quantum Computing), NCSR (Cybersecurity), SNS Gen AI US (Generative AI), NGI TBI (Microcontrollers)
+ 
+- Courses: Springboard (Python Programming); Udemy (Advanced HTML & CSS, Python, C, Photoshop CC, Figma)

@@ -108,7 +108,9 @@ export function CookieBanner() {
                     </div>
                     <div className="flex justify-between gap-3">
                       <dt className="text-[color:var(--ink)]">Analytics</dt>
-                      <dd className="text-[color:var(--graphite)]">None in use</dd>
+                      <dd className="text-[color:var(--graphite)]">
+                        Vercel Analytics — cookieless
+                      </dd>
                     </div>
                   </dl>
                 </motion.div>
